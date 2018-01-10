@@ -1,0 +1,26 @@
+{
+  "name": "liri-homework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaredRoss14/liri-homework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaredRoss14/liri-homework/issues"
+  },
+  "homepage": "https://github.com/JaredRoss14/liri-homework#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "inquirer": "^5.0.0",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
