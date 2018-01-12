@@ -23,19 +23,20 @@ inquirer.prompt([{
  	}
 ]).then(function(choice){
  		if (choice.command === "Look up tweets by username") {
- 			inquirer.createPromptModule([{
-	  			type: "input",
-    			message: "What twitter account are you looking for?",
-					name: "twitterAccount",
-				},
-				{
-	  			type: "list",
-    			message: "How many tweets would you like to look up?",
-    			choices: ["5", "10", "20"],
-					name: "tweetQuantity",
-				}]).then(function(inquirerResponse) {
-		 			var params = {screen_name: inquirerResponse.twitterAccount, count: parseInt(inquirerResponse.tweetQuantity)};
-		
+ 			inquirer.prompt([{
+  			type: "input",
+  			message: "What twitter account are you looking for?",
+				name: "twitterAccount",
+			},
+			{
+  			type: "list",
+  			message: "How many tweets would you like to look up?",
+  			choices: ["5", "10", "20"],
+				name: "tweetQuantity",
+			}
+			]).then(function(inquirerResponse){
+	 			var params = {screen_name: inquirerResponse.twitterAccount, count: parseInt(inquirerResponse.tweetQuantity)};
+	
 				client.get('statuses/user_timeline', params, function(error, response) {
   				if (!error) { 
   					for (var i = 0; i < response.length; i++) {
@@ -56,12 +57,14 @@ inquirer.prompt([{
 		        }
 		      } else {
 		      	console.log(error);
-		      }
-		    })
-		  })
+	     	  }
+	  	  })
+	  	})
 		} else {
 			console.log("No Tweets For You!")
 		}
+}).catch(function(error){
+	console.log(error);
 })
 
 
